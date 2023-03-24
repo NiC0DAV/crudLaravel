@@ -83,7 +83,7 @@ Class JwtAuth{
         } catch (InvalidArgumentException $e) {
             $response = 'Key may not be empty';
         } catch (UnexpectedValueException $e) {
-            $response = 'Wrong number of segments';
+            $response = 'El JWT proporcionado no es valido.';
         }
 
         if (!empty($decoded) && is_object($decoded) && isset($decoded->name) && isset($decoded->email)) {

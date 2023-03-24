@@ -15,5 +15,12 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::post('/register', [UserController::class, 'register']);
+Route::post('/login', [UserController::class, 'login']);
 
+Route::group(['middleware' => 'ApiAuthMiddleware'], function () {
+    Route::post('/register', [UserController::class, 'register']);
+    Route::put('/update/{id?}', [UserController::class, 'updateUser']);
+    Route::delete('/delete/{id?}', [UserController::class, 'deleteUser']);
+    Route::get('/detail/{id?}', [UserController::class, 'listUser']);
+    Route::get('/fecthUsers', [UserController::class, 'listUsers']);
+});

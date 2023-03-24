@@ -23,7 +23,7 @@ class ApiAuthMiddleware
         } else {
             $data = array(
                 'code' => "403",
-                'errorDescription' => $checkToken
+                'message' => $checkToken
             );
             return response()->json($data, $data['code']);
         }
